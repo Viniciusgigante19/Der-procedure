@@ -1,0 +1,59 @@
+CREATE DATABASE users;
+USE usuarios;
+
+CREATE TABLE `users`.`usuarios` (
+  `usuario` VARCHAR(30) NOT NULL,
+  `senha` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`usuario`));
+
+
+/*
+DELIMITER //
+CREATE PROCEDURE selectUsuario(
+	IN usuario_nome VARCHAR(30),
+    IN senha_usuario VARCHAR(50)
+)
+BEGIN 
+	IF usuario_nome IS NULL AND senha_usuario IS NULL THEN
+		SELECT * FROM usuarios;
+        
+	ELSE 
+		SELECT * FROM usuarios
+		WHERE usuario_nome = usuario;
+	END IF;
+END //
+DELIMITER ; 
+*/
+/*
+DELIMITER //
+CREATE PROCEDURE inserirUsuario(
+	IN usuario_nome VARCHAR(30),
+    IN senha_usuario VARCHAR(50)
+)
+BEGIN
+	INSERT INTO usuarios(usuario, senha)
+	VALUES (usuario_nome, senha_usuario);
+END //
+DELIMITER ;
+*/
+/*
+DELIMITER //
+CREATE PROCEDURE deleteUsuario(
+	IN usuario_nome VARCHAR(30)
+)
+BEGIN 
+		DELETE FROM usuarios WHERE usuario_nome = usuario;
+END //
+DELIMITER ;
+*/
+
+DELIMITER //
+CREATE PROCEDURE updateUsuario(
+	IN usuario_nome VARCHAR(30)
+)
+BEGIN 
+		UPDATE usuarios
+		SET usuario_nome = usuario_nome
+        WHERE usuario_nome = usuario;
+END //
+DELIMITER ;
